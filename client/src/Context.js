@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import Data from './Data';
 
+// create context
 const Context = React.createContext();
 
 export class Provider extends Component {
@@ -32,7 +33,7 @@ export class Provider extends Component {
     );
   }
 
-//Sign in method
+  //Sign in method
   signIn = async (emailAddress, password) => {
     const user = await this.data.getUser(emailAddress, password); //get user data
     if (user !== null) { //if there is a user
@@ -49,7 +50,7 @@ export class Provider extends Component {
     }
     return user;
   };
-//sign out method
+  //sign out method
   signOut = () => {
     this.setState({ authenticatedUser: null }); //remove authenticated user from state
     Cookies.remove('authenticatedUser'); //remove stored cookies
