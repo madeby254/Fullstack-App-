@@ -1,7 +1,7 @@
 //import React
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 //import React Router elements
-import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 //import styles
 import './App.css';
 
@@ -36,26 +36,27 @@ const UserSignUpWithContext = withContext(UserSignUp);
 const UserSignOutWithContext = withContext(UserSignOut);
 const HeaderWithContext = withContext(Header);
 
+// Routes and switch 
 class App extends Component {
 
-    render(){
+    render() {
         return (
             <Router>
                 <div id="root">
                     <div>
-                        <HeaderWithContext/>
-                        <hr/>
+                        <HeaderWithContext />
+                        <hr />
                         <Switch>
-                            <Route exact path='/' render={() => <Redirect to="/courses"/>} />
+                            <Route exact path='/' render={() => <Redirect to="/courses" />} />
                             <Route exact path='/courses' component={CoursesWithContext} />
                             <PrivateRoute path='/courses/create' component={CreateCourseWithContext} />
                             <Route exact path='/courses/:id' component={CourseDetailWithContext} />
                             <PrivateRoute exact path='/courses/:id/update' component={UpdateCourseWithContext} />
-                            <Route path='/signin' component={ UserSignInWithContext } />
-                            <Route path='/signup' component={ UserSignUpWithContext } />
-                            <Route path='/signout' component={ UserSignOutWithContext } />
+                            <Route path='/signin' component={UserSignInWithContext} />
+                            <Route path='/signup' component={UserSignUpWithContext} />
+                            <Route path='/signout' component={UserSignOutWithContext} />
                             <Route path='/error' component={Error} />
-                            <Route path='/forbidden' component={Forbidden}/>
+                            <Route path='/forbidden' component={Forbidden} />
                             <Route path='*' component={NotFound} />
                         </Switch>
                     </div>
